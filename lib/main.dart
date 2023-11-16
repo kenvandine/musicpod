@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
+//import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:gtk/gtk.dart';
@@ -64,10 +64,12 @@ Future<void> main(List<String> args) async {
     () => PodcastService(notificationsService),
     dispose: (s) async => await s.dispose(),
   );
+  /*
   final connectivity = Connectivity();
   registerService<Connectivity>(
     () => connectivity,
   );
+  */
 
   registerService<ExternalPathService>(
     () => ExternalPathService(

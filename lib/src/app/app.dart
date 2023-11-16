@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
+//import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ubuntu_service/ubuntu_service.dart';
@@ -16,7 +16,7 @@ import '../../podcasts.dart';
 import '../../radio.dart';
 import '../common/colors.dart';
 import '../external_path/external_path_service.dart';
-import 'connectivity_notifier.dart';
+//import 'connectivity_notifier.dart';
 import 'master_detail_page.dart';
 import 'master_items.dart';
 
@@ -52,11 +52,13 @@ class App extends StatefulWidget {
             getService<LibraryService>(),
           ),
         ),
+        /*
         ChangeNotifierProvider(
           create: (_) => ConnectivityNotifier(
             getService<Connectivity>(),
           ),
         ),
+        */
       ],
       child: const App(),
     );
@@ -80,7 +82,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
     final libraryModel = context.read<LibraryModel>();
     final playerModel = context.read<PlayerModel>();
-    final connectivityNotifier = context.read<ConnectivityNotifier>();
+    //final connectivityNotifier = context.read<ConnectivityNotifier>();
 
     final extPathService = getService<ExternalPathService>();
 
@@ -95,8 +97,10 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
+      /*
       connectivityNotifier.init().then(
         (_) {
+          */
           libraryModel.init().then(
             (_) {
               playerModel.init().then((_) {
@@ -107,8 +111,10 @@ class _AppState extends State<App> with WidgetsBindingObserver {
               });
             },
           );
+        /*
         },
       );
+      */
     });
   }
 
@@ -132,7 +138,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     final playerToTheRight = MediaQuery.of(context).size.width > 1700;
 
     // Connectivity
-    final isOnline = context.select((ConnectivityNotifier c) => c.isOnline);
+    //final isOnline = context.select((ConnectivityNotifier c) => c.isOnline);
+    final isOnline = true;
 
     // Local Audio
     final localAudioModel = context.read<LocalAudioModel>();
